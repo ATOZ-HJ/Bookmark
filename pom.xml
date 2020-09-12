@@ -20,6 +20,7 @@
         <module>java-file</module>
         <module>java-file/pdf</module>
         <module>minio</module>
+        <module>dingtalk</module>
     </modules>
 
     <properties>
