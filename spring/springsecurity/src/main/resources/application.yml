@@ -1,0 +1,9 @@
+server:
+  port: 6688
+spring:
+  application:
+    name: spring-security-demo
+  security:
+    user:
+      name: admin
+      password: 123

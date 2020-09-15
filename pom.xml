@@ -21,6 +21,7 @@
         <module>java-file/pdf</module>
         <module>minio</module>
         <module>dingtalk</module>
+        <module>spring</module>
     </modules>
 
     <properties>
