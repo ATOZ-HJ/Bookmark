@@ -22,6 +22,8 @@
         <module>minio</module>
         <module>dingtalk</module>
         <module>spring</module>
+        <module>exercise</module>
+        <module>consul</module>
     </modules>
 
     <properties>

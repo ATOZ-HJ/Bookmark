@@ -17,9 +17,9 @@ import java.security.NoSuchAlgorithmException;
 public class MinioUploadDemo {
     public static void main(String[] args) throws InvalidPortException, InvalidEndpointException, IOException, InvalidKeyException, InvalidResponseException, InsufficientDataException, NoSuchAlgorithmException, InternalException, XmlParserException, InvalidBucketNameException, ErrorResponseException, RegionConflictException {
         //1.初始化minio对象
-        String endPoint = "http://47.111.240.51:9000";
-        String accessKey = "admin";
-        String secretKey = "12345678";
+        String endPoint = "http://10.253.48.53:9000";
+        String accessKey = "AKIAIOSFODNN7EXAMPLE";
+        String secretKey = "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY";
         String bucketName = "test";
         MinioClient minioClient = new MinioClient(endPoint, accessKey, secretKey);
         boolean isExist = minioClient.bucketExists(bucketName);
