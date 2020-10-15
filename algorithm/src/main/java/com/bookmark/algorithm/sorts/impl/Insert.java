@@ -23,15 +23,16 @@ import java.util.Arrays;
 public class Insert implements SortAlgorithm {
     @Override
     public int[] sort(int[] arr) {
-
-
-        for (int i = 1; i < arr.length; i++) {
-
+        //TODO 以下实现是否正确
+        for (int i = 0; i < arr.length; i++) {
+            int temp = arr[i];
             for (int j = i; j > 0; j--) {
-                if (arr[j - 1] > arr[j]) {
-                    int temp = arr[j - 1];
-                    arr[j - 1] = arr[j];
-                    arr[j] = temp;
+                if (temp < arr[j - 1]) {
+                    arr[j] = arr[j - 1];
+                    arr[j - 1] = temp;
+                } else {
+                    //停止内层的当前循环
+                    break;
                 }
             }
         }
