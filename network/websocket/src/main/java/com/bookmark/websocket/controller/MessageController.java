@@ -1,10 +1,19 @@
 package com.bookmark.websocket.controller;
 
 import com.bookmark.websocket.pojo.MessageBody;
+import com.sun.corba.se.impl.protocol.giopmsgheaders.RequestMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.security.Principal;
 
 /**
  * @Author: hj
@@ -13,14 +22,15 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class MessageController {
-    /** 消息发送工具对象 */
     @Autowired
     private SimpMessageSendingOperations simpMessageSendingOperations;
 
-    /** 广播发送消息，将消息发送到指定的目标地址 */
+    /**
+     * 点对点发送消息，将消息发送到指定用户
+     */
     @MessageMapping("/test")
-    public void sendTopicMessage(MessageBody messageBody) {
-        // 将消息发送到 WebSocket 配置类中配置的代理中（/topic）进行消息转发
-        simpMessageSendingOperations.convertAndSend(messageBody.getDestination(), messageBody);
+    public void sendUserMessage( Principal principal, MessageBody messageBody) {
+        messageBody.setFrom(principal.getName());
+        simpMessageSendingOperations.convertAndSendToUser(messageBody.getTargetUser(), messageBody.getDestination(), messageBody);
     }
 }

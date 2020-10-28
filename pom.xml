@@ -30,6 +30,7 @@
         <module>app/dingtalk</module>
         <module>network</module>
         <module>network/websocket</module>
+        <module>developtest</module>
     </modules>
 
     <properties>
@@ -39,6 +40,12 @@
     </properties>
 
     <dependencies>
+        <!--lang 工具包-->
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
