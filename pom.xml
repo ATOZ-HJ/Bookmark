@@ -20,26 +20,41 @@
         <module>java-file</module>
         <module>java-file/pdf</module>
         <module>spring</module>
+        <module>spring/springsecurity</module>
         <module>exercise</module>
         <module>consul</module>
         <module>algorithm</module>
         <module>json</module>
         <module>task</module>
-        <module>app</module>
-        <module>app/minio</module>
-        <module>app/dingtalk</module>
         <module>network</module>
+        <module>openapi</module>
+        <module>openapi/dingtalk</module>
+        <module>openapi/minio</module>
         <module>network/websocket</module>
         <module>developtest</module>
+        <module>jdk</module>
     </modules>
 
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>5.1.4.RELEASE</spring.version>
+        <junit.version>4.12</junit.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
         <!--lang 工具包-->
         <dependency>
             <groupId>commons-lang</groupId>
