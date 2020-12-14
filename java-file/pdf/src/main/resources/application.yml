@@ -1,6 +1,3 @@
 ## pdf export config
-pdfExport:
-  fontSimsun: static/font/simsun.ttc
-  employeeKpiFtl: templates/pdf_export_employee_kpi.ftl
 server:
   port: 9095

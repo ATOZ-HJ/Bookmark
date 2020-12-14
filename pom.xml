@@ -33,6 +33,7 @@
         <module>network/websocket</module>
         <module>developtest</module>
         <module>jdk</module>
+        <module>designpatterns</module>
     </modules>
 
     <properties>
