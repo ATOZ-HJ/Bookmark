@@ -23,7 +23,7 @@
         <module>spring/springsecurity</module>
         <module>exercise</module>
         <module>consul</module>
-        <module>algorithm</module>
+        <module>leetcode</module>
         <module>json</module>
         <module>task</module>
         <module>network</module>
