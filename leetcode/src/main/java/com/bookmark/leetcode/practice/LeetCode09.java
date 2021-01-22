@@ -30,19 +30,13 @@ public class LeetCode09 {
         if (x < 0) {
             return false;
         }
-        //先作反转操作，参考leetCode07
+        //先作反转操作，参考leetCode07 ，相比较于反转，取消了每次循环对int值大小的判断，因为如果是回文数的话，反转也是相同的值
         int result = 0;
         int temp = x;
         while (x != 0) {
             int pop = x % 10;
             x /= 10;
-            //判断int类型大小
-            if (result > Integer.MAX_VALUE / 10 || (result == Integer.MAX_VALUE/10 && pop > 7)) {
-                return false;
-            }
-            if (result < Integer.MIN_VALUE / 10 || (result == Integer.MIN_VALUE/10 && pop < -8)) {
-                return false;
-            }
+
             result = result * 10 + pop;
         }
         return result == temp;
