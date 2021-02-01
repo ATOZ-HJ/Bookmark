@@ -1,5 +1,7 @@
 package com.book.developtest;
 
+import java.util.Date;
+
 /**
  * @Author: hj
  * @DateTime: 2020/10/30 10:24
@@ -7,10 +9,7 @@ package com.book.developtest;
  */
 public class Test1 {
     public static void main(String[] args) {
-//        head = (head - 1) & (elements.length - 1)
-        int head = 0;
-        int length = 8;
-        head = (head - 1) & (length - 1);
-        System.out.println("head = " + head);
+        Date date = new Date(1611978896364L);
+        System.out.println("date = " + date);
     }
 }
