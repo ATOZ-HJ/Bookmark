@@ -2,7 +2,7 @@
 
 1. 修改 .git 文件中
 
-![](../../static/Snipaste_2021-02-01_16-42-40.png)
+![Snipaste_2021-02-01_16-42-40](static/Snipaste_2021-02-01_16-42-40.png)
 
 
 

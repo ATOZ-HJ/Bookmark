@@ -42,7 +42,7 @@
 
 2. 分为两种下载方式，第一种是 binary-only，二进制代码；第二种 complete包含文档等内容，如有需要可下载complete版本
 
-   ![image-20210129103728249](../static/image-20210129103728249.png)
+   ![image-20210129103728249](static/image-20210129103728249.png)
 
 
 
@@ -56,11 +56,11 @@
 
 1. 编辑系统变量，创建 `GRADLE_HOME`，指定gradle解压后的目录(起始就是bin目录所在的目录)
 
-![image-20210129104709693](../static/image-20210129104709693.png)
+![image-20210129104709693](static/image-20210129104709693.png)
 
 2. 编辑系统变量，创建`GRADLE_USER_HOME`，指定gradle仓库，或者直接指定为maven仓库
 
-![image-20210129104526264](../static/image-20210129104526264.png)
+![image-20210129104526264](static/image-20210129104526264.png)
 
 3. 修改环境变量Path，添加 `%GRADLE_HOME%\bin`
 
@@ -114,7 +114,7 @@ allprojects {
 
 2. 选择需要下载的版本
 
-![image-20210129110911816](../static/image-20210129110911816.png)
+![image-20210129110911816](static/image-20210129110911816.png)
 
 
 
@@ -122,7 +122,7 @@ allprojects {
 
 3. 复制地址，下载到你的目录下
 
-![image-20210129112203290](../static/image-20210129112203290.png)
+![image-20210129112203290](static/image-20210129112203290.png)
 
 
 
@@ -130,14 +130,14 @@ allprojects {
 
 1. 可参考spring源码仓库中提供的 Build 文档
 
-![image-20210129112524929](../static/image-20210129112524929.png)
+![image-20210129112524929](static/image-20210129112524929.png)
 
 
 
 2. 确保本地环境已经准备完成，我的是jdk1.8，Gradle 6.8.1, win10
 3. 修改项目根目录下的 build.gradle  文件，打开并且添加阿里云的仓库，下载依赖会更快
 
-![buildgradle](../static/buildgradle.png)
+![buildgradle](static/buildgradle.png)
 
 ```
 repositories {
@@ -164,27 +164,25 @@ repositories {
 
 1. idea配置修改
 
-![ideasettings](../static/ideasettings.png)
+![ideasettings](static/ideasettings.png)
 
 
 
 2. 打开项目
 
-![image-20210129141031760](../static/image-20210129141031760.png)
+![image-20210129141031760](static/image-20210129141031760.png)
 
 
 
 3. idea将会建立所以请内心等待，笔者在使用idea导入的时候，idea版本为2019.3.1时，报错如下，后将idea版本更换为2020.3.2，问题解决
 
-![image-20210129092832387](../static/image-20210129092832387.png)
-
-
+![image-20210129092832387](static/image-20210129092832387.png)
 
 
 
 4. 正确构建后，效果如下
 
-![image-20210129141238220](../static/image-20210129141238220.png)
+![image-20210129141238220](static/image-20210129141238220.png)
 
 
 
@@ -194,7 +192,7 @@ repositories {
 
 1. idea版本问题，更换成2020.3.2之后这个问题就没有了
 
-![image-20210129092832387](../static/image-20210129092832387.png)
+![image-20210129092832387](static/image-20210129092832387-1612490529678.png)
 
 
 
