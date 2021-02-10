@@ -252,10 +252,10 @@ public abstract class AbstractResource implements Resource {
 
 - ResouceLoader ：统一的资源加载器
   - DefaultResouceLoader ：默认的资源加载器的实现
-    - ClassRelativeResourceLoader：
-    - FileSystemResouceLoader：
-  - ResourcePatternResolver：
-  - PathMatchingResoucePatternResolver：
+    - ClassRelativeResourceLoader： 根据给定的Class对象返回资源
+    - FileSystemResouceLoader：根据文件系统路径返回资源
+  - ResourcePatternResolver：根据路径匹配规则
+  - PathMatchingResoucePatternResolver：ResourcePatternResolver 的具体实现，根据不同的路径匹配规则，如 classpath*:  , Ant风格路径等返回多个资源，同时也支持默认的DefaultResourceLoader实现，加载单个资源
 
 
 
@@ -264,7 +264,7 @@ public abstract class AbstractResource implements Resource {
 ##### 2.1  DefaultResouceLoader  (ResourceLoader接口的默认实现)
 
 1. ResourceLoader的默认实现
-2. 核心方法是 getResource() 方法获取资源
+2. **核心方法**是 getResource() 方法获取资源
 
 ```java
 /**
