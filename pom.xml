@@ -34,6 +34,7 @@
         <module>developtest</module>
         <module>jdk</module>
         <module>designpatterns</module>
+        <module>algorithm</module>
     </modules>
 
     <properties>
