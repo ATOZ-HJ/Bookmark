@@ -5,7 +5,8 @@ import java.util.Arrays;
 /**
  * @author: hj
  * @date: 2021-02-22 16:17
- * @description: 稀疏数组实现
+ * @description: 稀疏数组demo实现
+ * 涉及二维数组概念
  **/
 public class SparseArray {
     public static void main(String[] args) {
@@ -58,6 +59,23 @@ public class SparseArray {
         System.out.println("打印稀疏数组");
         print(sparseArr);
 
+
+        //稀疏数组转成原始数组
+        //取出稀疏数组第一行的数据
+        //原始数组 行
+        int rowNum = sparseArr[0][0];
+        //原始数组 列
+        int colNum = sparseArr[0][1];
+
+        int[][] arr2 = new int[rowNum][colNum];
+        for (int i =1; i < sparseArr.length; i++) {
+            int row = sparseArr[i][0];
+            int col = sparseArr[i][1];
+            int value = sparseArr[i][2];
+            arr2[row][col] = value;
+        }
+        System.out.println("稀疏数组转成二维数组:");
+        print(arr2);
     }
 
    public static void print(int[][] arr) {
@@ -67,6 +85,10 @@ public class SparseArray {
            }
            System.out.println();
        }
+    }
+
+    public static int[][] toSparseArr(int[][] arr) {
+        return null;
     }
 
 }
