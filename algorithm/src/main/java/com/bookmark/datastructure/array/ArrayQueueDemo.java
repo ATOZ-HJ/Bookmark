@@ -1,4 +1,6 @@
-package com.bookmark.datastructure;
+package com.bookmark.datastructure.array;
+
+import java.util.Arrays;
 
 /**
  * @author: hj
@@ -92,7 +94,7 @@ public class ArrayQueueDemo {
                 throw new RuntimeException("队列为空");
             }
             for (int i = front+1; i <= rear; i++) {
-                System.out.println(this.arr[i]);
+                System.out.println(Arrays.toString(arr));
             }
         }
 
