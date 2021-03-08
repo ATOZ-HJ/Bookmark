@@ -1,4 +1,4 @@
-package com.bookmark.datastructure.array;
+package com.datastructure.array.demo;
 
 import java.util.Arrays;
 

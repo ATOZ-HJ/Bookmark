@@ -1,4 +1,4 @@
-package com.bookmark.datastructure.array;
+package com.datastructure.array.demo;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,34 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CircleArrayQueueDemo {
     public static void main(String[] args) {
-        Queue queue = new Queue(4);
-        //先加入两个元素
-        queue.add(1);
-        queue.show();
-        queue.add(2);
-        queue.show();
 
-        //取出一个元素
-        queue.get();
-        queue.show();
-
-        //加入多个元素,并且会发生扩容
-        queue.add(3);
-        queue.show();
-        queue.add(4);
-        queue.show();
-        queue.add(5);
-        queue.show();
-        queue.add(6);
-        queue.show();
-        queue.add(7);
-        queue.show();
-        queue.add(8);
-        queue.show();
-        queue.add(9);
-        queue.show();
-        queue.add(10);
-        queue.show();
     }
 
 
