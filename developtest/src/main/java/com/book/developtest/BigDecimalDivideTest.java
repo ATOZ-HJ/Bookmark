@@ -10,10 +10,13 @@ import java.math.RoundingMode;
  **/
 public class BigDecimalDivideTest {
     public static void main(String[] args) {
-        BigDecimal a = new BigDecimal("1");
-        BigDecimal b = new BigDecimal("3");
-        BigDecimal c = new BigDecimal("8");
-        BigDecimal divide =c.multiply(a.divide(b)).setScale(2,BigDecimal.ROUND_HALF_UP) ;
-        System.out.println("divide = " + divide);
+        int i = 100_0000;
+        float f = 1.14F;
+        double d = 3.14;
+        String str = "abc";
+        boolean naN = Double.isNaN(d);
+        char c = 's';
+        int x;
+        System.out.println("naN = " + naN);
     }
 }
