@@ -1,5 +1,7 @@
 package com.book.developtest;
 
+import org.junit.Test;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -9,14 +11,13 @@ import java.math.RoundingMode;
  * @description:
  **/
 public class BigDecimalDivideTest {
-    public static void main(String[] args) {
-        int i = 100_0000;
-        float f = 1.14F;
-        double d = 3.14;
-        String str = "abc";
-        boolean naN = Double.isNaN(d);
-        char c = 's';
-        int x;
-        System.out.println("naN = " + naN);
+    @Test
+    public void testMulti() {
+        BigDecimal dec10 = new BigDecimal("10");
+        BigDecimal dec3 = new BigDecimal("3");
+        BigDecimal dec20 = new BigDecimal("20");
+        BigDecimal dec7 = new BigDecimal("7");
+        BigDecimal subtract = dec10.subtract(dec3).multiply(dec20).subtract(dec7);
+        System.out.println("subtract = " + subtract);
     }
 }
