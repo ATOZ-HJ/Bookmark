@@ -26,6 +26,7 @@
         <module>jdk</module>
         <module>designpatterns</module>
         <module>algorithm</module>
+        <module>nowcoder</module>
     </modules>
 
     <properties>
