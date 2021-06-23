@@ -1,5 +1,7 @@
 package com.bookmark.nowcoder1.array;
 
+import java.util.HashMap;
+
 /**
  * @author: hj
  * @date: 2021-06-11 10:25
@@ -39,6 +41,9 @@ public class JZ7 {
      * 超过33.92% 用Java提交的代码
      * 占用内存：9764KB
      * 超过3.38%用Java提交的代码
+     * <p>
+     * <p>
+     * 简单递归 性能较差
      *
      * @param n
      * @return
@@ -47,12 +52,33 @@ public class JZ7 {
         if (n == 0 || n == 1) {
             return n;
         }
-
+        //使用map来保存每次的计算结果，不做重复计算
         return Fibonacci1(n - 1) + Fibonacci1(n - 2);
     }
 
+    /**
+     * <p>
+     * 对重复计算问题进行了优化 ,加入map缓存，避免重复计算 ；备忘录算法
+     *
+     * @param n
+     * @return
+     */
+    public static int Fibonacci2(int n, HashMap<Integer, Integer> map) {
+        if (n == 0 || n == 1) {
+            return n;
+        }
+        //使用map来保存每次的计算结果，不做重复计算
+        if (map.containsKey(n)) {
+            return map.get(n);
+        } else {
+            int value = Fibonacci2(n - 1, map) + Fibonacci2(n - 2, map);
+            map.put(n, value);
+            return value;
+        }
+    }
+
     public static void main(String[] args) {
-        int fibonacci = Fibonacci(4);
+        int fibonacci = Fibonacci2(4, new HashMap<>());
         System.out.println("fibonacci = " + fibonacci);
     }
 }
