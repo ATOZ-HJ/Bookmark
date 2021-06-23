@@ -77,8 +77,40 @@ public class JZ7 {
         }
     }
 
+    /**
+     * <p>
+     * 使用动态规划的方式
+     * 状态转移方程 : F(n) = F(n-1) + f(n+1)
+     * 边界 : f(0) = 0  ;  f(1) = 1
+     * 最优子结构 ： F(n-1) + f(n+1)
+     * <p>
+     * <p>
+     * 运行时间：12ms
+     * 超过79.52% 用Java提交的代码
+     * 占用内存：9720KB
+     * 超过5.06%用Java提交的代码
+     *
+     * @param n
+     * @return
+     */
+    public static int Fibonacci3(int n) {
+        if (n == 0 || n == 1) {
+            return n;
+        }
+        int a = 0;
+        int b = 1;
+        int temp = 0;
+        for (int i = 2; i < n + 1; i++) {
+            temp = a + b;
+            a = b;
+            b = temp;
+        }
+        return temp;
+    }
+
     public static void main(String[] args) {
-        int fibonacci = Fibonacci2(4, new HashMap<>());
-        System.out.println("fibonacci = " + fibonacci);
+//        int fibonacci = Fibonacci2(4, new HashMap<>());
+        int fibonacci3 = Fibonacci3(4);
+        System.out.println("fibonacci3 = " + fibonacci3);
     }
 }
