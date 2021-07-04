@@ -1,5 +1,9 @@
 package com.bookmark.nowcoder1.array;
 
+import org.junit.Test;
+
+import java.util.HashMap;
+
 /**
  * @author: hj
  * @date: 2021-06-15 08:51
@@ -12,7 +16,56 @@ package com.bookmark.nowcoder1.array;
  **/
 
 public class JZ28 {
+    /**
+     * 方法一 ，使用map来保存数组中每个元素的count
+     * 这个方法牛客网编译不通过，不允许使用hashmap
+     *
+     * @param array
+     * @return
+     */
     public int MoreThanHalfNum_Solution(int[] array) {
+        int lengthHalf = array.length / 2;
+        HashMap<Integer, Integer> map = new HashMap<>(16);
+        for (int a : array) {
+            if (!map.containsKey(a)) {
+                map.put(a, 1);
+            } else {
+                Integer count = map.get(a);
+                map.put(a, ++count);
+                if (count > lengthHalf) {
+                    return a;
+                }
+            }
+        }
         return 0;
+    }
+
+    /**
+     * @param array
+     * @return
+     */
+    public int MoreThanHalfNum_Solution2(int[] array) {
+        int lengthHalf = array.length / 2;
+        HashMap<Integer, Integer> map = new HashMap<>(16);
+        for (int a : array) {
+            if (!map.containsKey(a)) {
+                map.put(a, 1);
+            } else {
+                Integer count = map.get(a);
+                map.put(a, ++count);
+                if (count > lengthHalf) {
+                    return a;
+                }
+            }
+        }
+        return 0;
+    }
+
+    @Test
+    public void test1() {
+        int result1 = MoreThanHalfNum_Solution(new int[]{
+                1, 2, 3, 2, 2, 2, 5, 4, 2
+        });
+        System.out.println("result1 = " + result1);
     }
 }
