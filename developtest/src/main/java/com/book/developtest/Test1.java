@@ -1,6 +1,10 @@
 package com.book.developtest;
 
-import java.util.Date;
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * @Author: hj
@@ -8,8 +12,33 @@ import java.util.Date;
  * @Description:
  */
 public class Test1 {
-    public static void main(String[] args) {
-        Date date = new Date(1611978896364L);
-        System.out.println("date = " + date);
+
+    @Test
+    public void test1() {
+        List<String> aList = new ArrayList<>();
+        List<String> bList = new ArrayList<>();
+        aList.add("1");
+        aList.add("2");
+        aList.add("3");
+        aList.add("4");
+
+        bList.add("2");
+        bList.add("3");
+        bList.add("4");
+        bList.add("5");
+
+//        aList.retainAll(bList);
+//        System.out.println("aList = " + aList);
+
+        aList.removeAll(bList);
+
+        aList.addAll(bList);
+
+        System.out.println("aListall = " + aList);
+
+        HashMap<String, String> aMap = new HashMap<>();
+        aMap.put("1", "1");
+        String aMapValue = aMap.get("2");
+        System.out.println("aMapValue = " + aMapValue);
     }
 }
