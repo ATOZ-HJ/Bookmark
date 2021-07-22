@@ -21,14 +21,13 @@
         <module>openapi/minio</module>
         <module>network/websocket</module>
         <module>developtest</module>
-        <module>jdk</module>
         <module>designpatterns</module>
         <module>algorithm</module>
         <module>nowcoder</module>
         <module>springboot-dubbo</module>
-        <module>sample-api</module>
         <module>springboot-dubbo/sample-api</module>
         <module>springboot-dubbo/sample-provider</module>
+        <module>jdk</module>
     </modules>
 
     <properties>
