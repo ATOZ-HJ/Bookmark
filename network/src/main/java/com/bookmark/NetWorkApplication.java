@@ -1,16 +1,16 @@
-package com.bookmark.websocket;
+package com.bookmark;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * @Author: hj
- * @DateTime: 2020/10/28 14:20
- * @Description:
- */
+ * @author: hj
+ * @date: 2021-08-03 16:29
+ * @description:
+ **/
 @SpringBootApplication
-public class Application {
+public class NetWorkApplication {
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(NetWorkApplication.class, args);
     }
 }
