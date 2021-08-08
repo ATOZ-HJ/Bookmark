@@ -19,7 +19,7 @@
         <module>openapi</module>
         <module>openapi/dingtalk</module>
         <module>openapi/minio</module>
-        <module>network/websocket</module>
+        <module>network</module>
         <module>developtest</module>
         <module>designpatterns</module>
         <module>algorithm</module>
