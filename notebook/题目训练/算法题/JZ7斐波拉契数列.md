@@ -1,19 +1,28 @@
-package com.bookmark.nowcoder1.array;
+## JZ7斐波那契数列
 
-import java.util.HashMap;
+### 描述
 
-/**
- * @author: hj
- * @date: 2021-06-11 10:25
- * @description: 斐波那契数列
- * <p>
- * 大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项（从0开始，第0项为0，第1项是1）。
- * n≤39
- **/
+大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项（从0开始，第0项为0，第1项是1）。*n*≤39
 
-public class JZ7 {
+### 示例1
 
-    /**
+```
+输入：4
+返回：3
+```
+
+
+
+### 解题
+
+#### 1、for循环数组
+
+> 处理临界值后，创建一个数组，根据斐波那契数列的递推公式在for循环内求出第n个值
+>
+> 这个方法有点类似动态规划了
+
+```Java
+ /**
      * 运行时间：12ms
      * 超过79.52% 用Java提交的代码
      * 占用内存：9720KB
@@ -36,8 +45,20 @@ public class JZ7 {
         }
         return array[n];
     }
+```
 
-    /**
+
+
+
+
+
+
+#### 2、简单递归
+
+> 处理临界值，根据公式，递归调用方法
+
+```java
+/**
      * 官方解答1:使用递归实现，时间复杂度较高
      * 运行时间：323ms
      * 超过33.92% 用Java提交的代码
@@ -57,8 +78,16 @@ public class JZ7 {
         //使用map来保存每次的计算结果，不做重复计算
         return Fibonacci1(n - 1) + Fibonacci1(n - 2);
     }
+```
 
-    /**
+
+
+#### 3、备忘录算法
+
+> 使用map作为缓存，减少数列项的重复计算
+
+```Java
+   /**
      * <p>
      * 对重复计算问题进行了优化 ,加入map缓存，避免重复计算 ；备忘录算法
      *
@@ -78,8 +107,20 @@ public class JZ7 {
             return value;
         }
     }
+```
 
-    /**
+
+
+
+
+#### 4、动态规划
+
+> 1. 确定状态转移方程(类似于递推公式)
+> 2. 处理边界问题
+> 3. 找到方程的最优子结构
+
+```java
+/**
      * <p>
      * 使用动态规划的方式
      * 状态转移方程 : F(n) = F(n-1) + f(n+1)
@@ -109,10 +150,5 @@ public class JZ7 {
         }
         return temp;
     }
+```
 
-    public static void main(String[] args) {
-//        int fibonacci = Fibonacci2(4, new HashMap<>());
-        int fibonacci3 = Fibonacci3(4);
-        System.out.println("fibonacci3 = " + fibonacci3);
-    }
-}
