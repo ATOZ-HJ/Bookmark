@@ -1,8 +1,6 @@
 package com.bookmark.nowcoder1.array;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.HashSet;
 
 /**
  * @author: hj
@@ -26,12 +24,14 @@ import java.util.Set;
  **/
 public class JZ50 {
     /**
-     * 使用map缓存每个数值的计算次数
+     * 使用set缓存每个数值的计算次数
      * <p>
-     * 运行时间：84ms
-     * 超过8.59% 用Java提交的代码
-     * 占用内存：15572KB
-     * 超过0.77%用Java提交的代码
+     * 运行时间：77ms
+     * 超过18.25% 用Java提交的代码
+     * 占用内存：15408KB
+     * 超过1.02%用Java提交的代码
+     * <p>
+     * 时间复杂度: n
      *
      * @param numbers int整型一维数组
      * @return int整型
@@ -40,21 +40,79 @@ public class JZ50 {
         if (numbers.length == 0) {
             return -1;
         }
-        HashMap<Integer, Integer> map = new HashMap<>();
+        HashSet<Integer> set = new HashSet<>();
+
         for (int number : numbers) {
-            Integer value = map.get(number);
-            if (value == null) {
-                map.put(number, 1);
+            if (set.contains(number)) {
+                return number;
             } else {
-                map.put(number, ++value);
+                set.add(number);
             }
         }
-        Set<Map.Entry<Integer, Integer>> entries = map.entrySet();
-        for (Map.Entry<Integer, Integer> entry : entries) {
-            Integer number = entry.getKey();
-            Integer count = entry.getValue();
-            if (count > 1) {
-                return number;
+        return -1;
+    }
+
+
+    /**
+     * 双层for循环
+     * 运行时间：79ms
+     * 超过14.57% 用Java提交的代码
+     * 占用内存：14384KB
+     * 超过28.72%用Java提交的代码
+     * <p>
+     * 时间复杂度n^2
+     *
+     * @param numbers
+     * @return
+     */
+    public int duplicate2(int[] numbers) {
+        //采用双层for循环，判断是否有重复的
+        if (numbers.length == 0) {
+            return -1;
+        }
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = i + 1; j < numbers.length; j++) {
+                if (numbers[i] == numbers[j]) {
+                    return numbers[i];
+                }
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 可以先排序，然后遍历，如果相邻两个元素相等，则返回
+     * <p>
+     * 运行时间：108ms
+     * 超过2.64% 用Java提交的代码
+     * 占用内存：13952KB
+     * 超过32.13%用Java提交的代码
+     * <p>
+     *
+     * @param numbers
+     * @return
+     */
+    public int duplicate3(int[] numbers) {
+        if (numbers.length == 0) {
+            return -1;
+        }
+        //先排序(针对排序算法，接下来会专门训练)
+        //todo 优化排序算法，使用更好的实现
+        for (int i = 0; i < numbers.length - 1; i++) {
+            for (int j = i + 1; j < numbers.length; j++) {
+                int temp = 0;
+                if (numbers[i] > numbers[j]) {
+                    temp = numbers[i];
+                    numbers[i] = numbers[j];
+                    numbers[j] = temp;
+                }
+            }
+        }
+
+        //循环数组，判断相邻的两个元素是否有重复的元素
+        for (int i = 0; i < numbers.length - 1; i++) {
+            if (numbers[i] == numbers[i + 1]) {
+                return numbers[i];
             }
         }
         return -1;

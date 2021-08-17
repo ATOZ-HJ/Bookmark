@@ -54,6 +54,7 @@ public class JZ28 {
      * @return
      */
     public int MoreThanHalfNum_Solution2(int[] array) {
+        //todo 优化排序算法，使用更好的实现
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = i + 1; j < array.length; j++) {
                 int temp = 0;
@@ -66,7 +67,7 @@ public class JZ28 {
         }
         return array[array.length / 2];
     }
-    
+
 
     @Test
     public void test1() {
