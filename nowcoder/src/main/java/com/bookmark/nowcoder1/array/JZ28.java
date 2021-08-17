@@ -66,44 +66,7 @@ public class JZ28 {
         }
         return array[array.length / 2];
     }
-
-
-    /**
-     * 候选法 官方建议题解
-     * 1. 遍历数组，使用preValue记录当前的值
-     * 2. 用count记录当前值出现的次数
-     * 3. 如果下一个值和preValue相等，count++，否则 count--
-     * 4. 当count==0，preValue = 当前值
-     * 5. 如果一个数出现的次数超过当前数组长度的一半,则遍历完成后，preValue一定是该值，并且count>0
-     *
-     * @param array
-     * @return
-     */
-    public int MoreThanHalfNum_Solution3(int[] array) {
-        if (array == null || array.length == 0) {
-            return 0;
-        }
-        int count = 1;
-        int preValue = array[0];
-        for (int i = 1; i < array.length; i++) {
-            if (preValue == array[i]) {
-                count++;
-            } else {
-                count--;
-                if (count == 0) {
-                    preValue = array[i];
-                }
-            }
-        }
-        //如果在数组中存在超过一半的数组长度的值，则preValue一定是该值，接下来还需要验证这个值在数组中出现的次数的确超过数组长度一般
-        int num = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == preValue) {
-                num++;
-            }
-        }
-        return num > array.length / 2 ? preValue : 0;
-    }
+    
 
     @Test
     public void test1() {
