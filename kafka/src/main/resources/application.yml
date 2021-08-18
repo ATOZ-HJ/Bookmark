@@ -1,0 +1,25 @@
+server:
+  port: 10090
+spring:
+  application:
+    name: kafka
+  kafka:
+    bootstrap-servers: 10.253.48.53:9092
+    producer:
+      acks: 1
+      batch-size: 16384
+    consumer:
+      properties:
+        group:
+          id: defaultConsumerGroup
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+  endpoint:
+    health:
+      show-details: always
+
