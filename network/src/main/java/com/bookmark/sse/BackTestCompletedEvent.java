@@ -1,4 +1,4 @@
-package com.book.developtest.sse;
+package com.bookmark.sse;
 
 import lombok.Getter;
 import lombok.Setter;

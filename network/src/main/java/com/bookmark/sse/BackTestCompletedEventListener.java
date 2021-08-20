@@ -1,4 +1,4 @@
-package com.book.developtest.sse;
+package com.bookmark.sse;
 
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;

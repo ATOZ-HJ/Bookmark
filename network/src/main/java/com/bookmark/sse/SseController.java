@@ -1,4 +1,4 @@
-package com.book.developtest.sse;
+package com.bookmark.sse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
