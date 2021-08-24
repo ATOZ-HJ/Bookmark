@@ -1,4 +1,4 @@
-package com.bookmark.leetcode.practice;
+package com.datastructure.leetcode.practice;
 
 /**
  * @author: hj

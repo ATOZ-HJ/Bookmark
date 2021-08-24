@@ -1,4 +1,4 @@
-package com.bookmark.leetcode;
+package com.datastructure.leetcode;
 
 /**
  * @author: hj
@@ -8,6 +8,7 @@ package com.bookmark.leetcode;
 public class ArraysAndMatrices {
 
 //    private static final int[] arr = {2, 1, 4, 5, 2, 4};
+
     /**
      * 数组中重复的数字
      * <p>

@@ -1,4 +1,4 @@
-package com.bookmark.nowcoder1.array;
+package com.datastructure.nowcoder.array;
 
 import java.util.HashMap;
 

@@ -1,4 +1,4 @@
-package com.bookmark.leetcode.linkedlist;
+package com.datastructure.leetcode.linkedlist;
 
 /**
  * @author: hj

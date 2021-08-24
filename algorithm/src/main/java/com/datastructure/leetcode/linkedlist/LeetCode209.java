@@ -1,7 +1,7 @@
-package com.bookmark.leetcode.linkedlist;
+package com.datastructure.leetcode.linkedlist;
 
-import com.bookmark.leetcode.common.DataStructureUtil;
-import com.bookmark.leetcode.common.ListNode;
+import com.datastructure.leetcode.common.DataStructureUtil;
+import com.datastructure.leetcode.common.ListNode;
 
 /**
  * @author: hj

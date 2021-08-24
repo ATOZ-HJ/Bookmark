@@ -1,4 +1,4 @@
-package com.bookmark.leetcode.common;
+package com.datastructure.leetcode.common;
 
 import lombok.Data;
 
