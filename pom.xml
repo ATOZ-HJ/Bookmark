@@ -27,8 +27,8 @@
         <module>springboot-dubbo</module>
         <module>springboot-dubbo/sample-api</module>
         <module>springboot-dubbo/sample-provider</module>
-        <module>jdk</module>
         <module>kafka</module>
+        <module>java</module>
     </modules>
 
     <properties>
