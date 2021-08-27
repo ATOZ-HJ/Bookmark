@@ -16,10 +16,19 @@ package com.datastructure.nowcoder.array;
  * [120,60,40,30,24]
  */
 public class JZ52 {
-    public int[] multiply(int[] arr) {
-        int[] arrB = new int[arr.length];
-        for (int i = 0; i < arrB.length; i++) {
-            
+    /**
+     * 暴力的方法
+     * 1.将A[i]赋值为1
+     * 2.求A数组所有元素的乘积
+     *
+     * @param A
+     * @return
+     */
+    public int[] multiply1(int[] A) {
+        int length = A.length;
+        int[] B = new int[length];
+        for (int i = 0; i < B.length; i++) {
         }
+        return null;
     }
 }
