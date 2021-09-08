@@ -1,12 +1,15 @@
 package com.book.developtest;
 
-import cn.hutool.core.date.DateTime;
-import cn.hutool.core.date.DateUtil;
-import com.book.developtest.util.JsonUtil;
-import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import org.junit.Test;
+
+import com.book.developtest.util.JsonUtil;
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+import cn.hutool.core.date.DateTime;
+import cn.hutool.core.date.DateUtil;
 
 /**
  * @author: hj
@@ -26,13 +29,10 @@ public class DevTest {
 
     @Test
     public void test2() {
-        String json = "{\n" +
-                "    \"task_id\": \"xx123s45a3\",\n" +
-                "    \"retcode\": 0,\n" +
-                "    \"retmsg\": \"\",\n" +
-                "    \"variety_list\":[{\"leg1_symbol\":\"Au(T+D)\"}, {\"leg2_symbol\":\"Ag(T+D)\"},{\"leg2_symbol\":\"Au99.99\"}],\n" +
-                "\t\"parameters\":[{\"n_up\":2}, {\"n_down\":0}, {\"n_mid\":0}, {\"f_up\":0}, {\"f_down\":0}, {\"f_mid\":0}]\n" +
-                "}";
+        String json = "{\n" + "    \"task_id\": \"xx123s45a3\",\n" + "    \"retcode\": 0,\n" + "    \"retmsg\": \"\",\n"
+            + "    \"variety_list\":[{\"leg1_symbol\":\"Au(T+D)\"}, {\"leg2_symbol\":\"Ag(T+D)\"},{\"leg2_symbol\":\"Au99.99\"}],\n"
+            + "\t\"parameters\":[{\"n_up\":2}, {\"n_down\":0}, {\"n_mid\":0}, {\"f_up\":0}, {\"f_down\":0}, {\"f_mid\":0}]\n"
+            + "}";
         System.out.println("json = " + json);
     }
 
@@ -58,5 +58,13 @@ public class DevTest {
 
         System.out.println("userCaseDOList1 = " + userCaseDOList1);
 
+    }
+
+    @Test
+    public void test4() throws JsonProcessingException {
+        String s =
+            "{\"task_id\": \"1435440689503670272\", \"timestamp\": \"2021-09-08 11:11:44.556130\", \"loglevel\": \"INFO\", \"logseq\": 0, \"logtype\": \"\\u7cfb\\u7edf\\u65e5\\u5fd7\", \"logmsg\": \"\\u4efb\\u52a1\\u5f00\\u59cb\\u6267\\u884c\", \"endflag\": false}";
+        LogDTO logDTO = JsonUtil.toBean(s, LogDTO.class);
+        System.out.println(logDTO);
     }
 }
