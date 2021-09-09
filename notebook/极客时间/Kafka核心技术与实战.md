@@ -53,6 +53,10 @@ Kafka的服务器端被称之为Broker，一个Kafka集群可以由多个Broker�
 
 
 
+### 疑问
+
+启发式算法
+
 
 
 

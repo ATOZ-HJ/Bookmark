@@ -67,4 +67,12 @@ public class DevTest {
         LogDTO logDTO = JsonUtil.toBean(s, LogDTO.class);
         System.out.println(logDTO);
     }
+
+    @Test
+    public void test5() {
+        String s =
+            "{\"task_id\": \"1631093013xx123s45a37474\", \"status\": \"SUCCESS\", \"info\": \"\", \"progress\": 1, \"seq\": 1, \"variety_list\": {\"leg1_symbol\": \"Ag(T+D)\", \"leg2_symbol\": \"Au(T+D)\"}, \"parameters\": {\"ma\": 10, \"n\": 2}}";
+        BizStrategyPreCompileResDTO bizStrategyPreCompileResDTO = JsonUtil.toBean(s, BizStrategyPreCompileResDTO.class);
+        System.out.println("bizStrategyPreCompileResDTO = " + bizStrategyPreCompileResDTO);
+    }
 }
