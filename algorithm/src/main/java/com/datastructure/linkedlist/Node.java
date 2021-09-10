@@ -1,4 +1,4 @@
-package com.datastructure.linkedlist.demo;
+package com.datastructure.linkedlist;
 
 /**
  * @author: hj
@@ -11,11 +11,11 @@ public class Node {
     public String name;
     public String nickName;
     public Node next;
+
     public Node(int no, String name, String nickName) {
         this.no = no;
         this.name = name;
         this.nickName = nickName;
     }
-
 
 }
