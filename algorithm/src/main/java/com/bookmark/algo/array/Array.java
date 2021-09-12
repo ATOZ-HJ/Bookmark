@@ -24,7 +24,7 @@ public class Array {
 
     /**
      * 构造函数
-     * 
+     *
      * @param capacity
      */
     public Array(int capacity) {
@@ -40,12 +40,12 @@ public class Array {
         if (count == n) {
             return -1;
         }
-
+        return 0;
     }
 
     /**
      * 数组元素的删除操作
-     * 
+     *
      * @param index
      * @return
      */
@@ -57,6 +57,7 @@ public class Array {
         for (int i = index; i < count - 1; i++) {
 
         }
+        return false;
     }
 
 }

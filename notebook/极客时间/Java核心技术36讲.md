@@ -1,6 +1,6 @@
-## 谈谈你对Java平台的理解
+## 1讲 谈谈你对Java平台的理解
 
-### 典型回答
+**典型回答**
 
 Java本身是一种面向对象的语言，最显著的特点有两个方面，一个是所谓的书写一次，到处运行，也即 write once，run anywhere ，能够非常容易的获得跨平台的特点，另外就是垃圾收集（GC，garbage collection），Java通过垃圾收集器（garbage collector）回收分配内存，大部分情况下，程序员不需要自己操心内存的分配和回收。
 
@@ -21,9 +21,9 @@ JIT编译器负责将热点代码在运行的时候编译成机器码并且保�
 
 
 
-## Exception和Error有什么区别
+## 2讲 Exception和Error有什么区别
 
-### 典型回答
+**典型回答**
 
 Exception和Error都继承了Throwable类，在Java中只有Throwable类型的实例才可以被抛出（throw）活着不活（catch），它是异常处理机制的基本组成类型。
 
@@ -37,7 +37,7 @@ Exception又分为可检查（checked）异常和不检查（unchecked）异常�
 
 
 
-### 考点分析
+**考点分析**
 
 一、理解Throwable、Exception、Error的设计和分类，比如掌握那些应用最为广泛的子类，以及如何自定义异常，其实就是异常的分类
 
@@ -47,7 +47,7 @@ Exception又分为可检查（checked）异常和不检查（unchecked）异常�
 
 1. 首先NoClassDefFoundError是Error的子类，ClassNotFoundException是Exception的子类
 
-#### ClassNotFoundException：
+**ClassNotFoundException：**
 
 当使用类加载器的加载某个类的时候，发现所有的path下面都没有找到，从引导类路径，扩展类路径到当前的classpath下都没有找到，就会抛出ClassNotFoundException异常，比如，加载JDBC驱动包的时候，以来的jar包不在classpath下，就会抛出该异常。
 
@@ -61,7 +61,7 @@ ClassLoader.findSystemClass()
 
 
 
-#### NoClassDefFoundError
+**NoClassDefFoundError**
 
 1. 编译的时候存在的某个类，但是运行的时候却找不到了
 
@@ -136,7 +136,7 @@ java.lang.ExceptionInInitializerError
 
 ```
 
-#### 总结
+**总结**
 
 1. 当使用反射或者类加载器的loadClass方法去动态的加载一个所有classpath里面都不存在的类，类加载器中运行时的load阶段就会直接抛出ClassNotFoundException异常。另外jvm认为这个异常是可以被预知的需要提前被check。
 2. 在编译时期正常，但是在运行时执行new关键词的时候，发现依赖类找不到，或者对于初始化失败的一个类，再次访问其境台成员或者方法，会直接抛出NoClassDefFoundError
@@ -153,6 +153,129 @@ try-catch-finally：
 throw：在代码中抛出一个异常
 
 throws：throws是方法可能抛出异常的声明
+
+
+
+## 3讲 谈谈final、finally、finalize有什么不同
+
+其实从含义来说，他们没有什么联系，只不过长得差不多罢了，那就一个一个来说吧
+
+**典型回答**
+
+final可以用来修饰类、方法、变量，final修饰类的时候表示这个类不可以被继承，final修饰的变量表示变量的引用不可以被修改，final修饰的方法表示该方法不可被重写。
+
+finally是java保证代码一定执行的一种机制。我们可以使用try- finally或者try- catch- finally来进行一些资源关闭的一些操作，如关闭JDB C链接，保证unlock锁等动作。
+
+finalize锁基础类java.lang.Object的一个方法，设计目的是为了保证对象在垃圾收集前完成特定资源的回收。finalize机制现在已经不推荐使用了，jdk9已经标记为deprecated。
+
+**考点分析**
+
+**final**
+
+- 将方法或者类声明为final，不允许别人修改
+
+Java核心类库或者一些第三方基础库中，有一些类就被声明为了final class，表示不能被修改，从某种程度上保证了平台的安全性。例如我们所熟悉的String类就是被声明为了final。
+
+- 使用final修改参数或者变量，可以防止意外赋值
+- final中产生了某种程度的不可变(immutable)的效果，可以保护只读数据。
+
+
+
+**finally**
+
+保证代码一定可以被执行。
+
+下面的代码中，由于try语句总直接退出程序了，所以finally代码块不会被执行。
+
+```
+try {
+ // do something
+ Sysem.exit(1);
+} fnally{
+ Sysem.out.println(“Print from fnally”);
+}
+```
+
+如果使用finally来进行资源关闭或者回收操作，更推荐使用Java7中的try-with-resources语句。
+
+try-with-resources语句是一种声明了一种或多种资源的try语句。资源是指在程序用完了之后必须要关闭的对象。try-with-resources语句保证了每个声明了的资源在语句结束的时候都会被关闭。任何实现了java.lang.AutoCloseable接口的对象，和实现了java.io.Closeable接口的对象，都可以当做资源使用。
+
+
+
+**finalize**
+
+对于finalize，我们要明确不推荐使用，因为无法保证重写的finalize什么时候执行，执行的是否符合预期，使用不当会影响性能，导致程序死锁，挂起。
+
+
+
+**知识扩展**
+
+1. final不是immutable
+
+final不等同于不可变，final修饰的变量，只是表示该变量不可以再被赋值，但是这个变量所指向的对象的行为不受影响。如果希望一个对象本身所不可变的，那么需要对这个对象所属的类的行为进行约束：
+
+- 将class声明为final
+- 将所有的成员变量声明为private，final
+- 构造对象的时候，成员变量采用**深度拷贝**来初始化，而不是直接赋值，因为你无法确定输入的对象不被其他人修改
+- 如果需要实现getter方法，或者其他的需要返回类内部的方法，使用copy-on-write原则，创建私有的copy。
+
+
+
+2. finalize为什么不推荐使用
+
+finalize的执行上和垃圾收集关联在一起的，一旦实现了非空的finalize，就会导致相应的对象回收呈现数量级的变慢。因为finalize被设计为中对象垃圾收集前调用，这就意味着实现了finalize方法的对象，JVM在对其进行垃圾回收时需要进行一些额外处理。finalize本质上称为了快速的回收的阻碍者，可能导致对象经过多个垃圾回收周期才能被回收。拖慢垃圾回收，导致大量对象堆积，会导致OOM。
+
+
+
+3. 有什么机制可以有效替代finalize
+
+Java平台目前逐步使用java.lang.ref.Cleaner来替换原有的finalize实现。Cleaner的实现利用了幻象引用，这是一种常见的所谓**post-mortem清理机制**，利用幻象引用，保证对象被彻底销毁前做一些类似的资源回收工作，比如关闭文件描述符，它比finalize更加轻量，更加可靠。
+
+Cleaner机制也有其局限性，如果由于一些原因导致幻象引用堆积，同样会导致OOM的问题。
+
+
+
+## 4讲 强引用、软引用、弱引用、幻象引用有什么区别？具体使用场景是什么？
+
+
+
+什么是对象可达性？
+
+几个引用的解释没看太懂，需要翻书确认一下
+
+内存泄漏
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 
 
 
