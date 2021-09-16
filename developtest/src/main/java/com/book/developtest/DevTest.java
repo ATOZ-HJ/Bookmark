@@ -75,4 +75,10 @@ public class DevTest {
         BizStrategyPreCompileResDTO bizStrategyPreCompileResDTO = JsonUtil.toBean(s, BizStrategyPreCompileResDTO.class);
         System.out.println("bizStrategyPreCompileResDTO = " + bizStrategyPreCompileResDTO);
     }
+
+    @Test
+    public void test6() {
+
+    }
+
 }
