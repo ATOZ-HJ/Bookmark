@@ -7,48 +7,62 @@ package com.bookmark.algo.stack;
  **/
 
 public class StackOnBrowser {
+    /**
+     * 当前页面
+     */
     private String currentPage;
 
+    /**
+     * 前进操作时，从该栈中取出地址
+     */
     private LinkedListBaseStack aheadStack;
 
+    /**
+     * 后退操作时，从该栈中取出地址
+     */
     private LinkedListBaseStack backStack;
 
-    /**
-     * 前进，从back栈中取出一个作为当前页面，并且将该地址放入到ahead栈中
-     * 
-     */
-    public String ahead() {
-        String back = backStack.pop();
-        if (back == null) {
-            return null;
-        }
-        this.currentPage = back;
-        aheadStack.push(back);
-        return currentPage;
+    public StackOnBrowser() {
+        this.aheadStack = new LinkedListBaseStack();
+        this.backStack = new LinkedListBaseStack();
     }
 
     /**
-     * 后退，从ahead栈中取出一个作为当前页面，并且将该地址放入到back栈中
-     * 
-     * @return
+     * 前进操作
      */
-    public String back() {
-        String ahead = aheadStack.pop();
-        if (ahead == null) {
-            return null;
+    public void goAhead() {
+        // 从 aheadStack 中取出一个地址
+        if (aheadStack != null) {
+            String url = aheadStack.pop();
+            // 将当前页面存入到backStack中
+            backStack.push(currentPage);
+            this.currentPage = url;
         }
-        this.currentPage = ahead;
-        backStack.push(ahead);
-        return currentPage;
     }
 
     /**
-     * 点击新的网页，清空back栈
-     * 
-     * @param url
+     * 后退操作
      */
-    public void click(String url) {
+    public void goBack() {
+        if (backStack != null) {
+            String url = backStack.pop();
+            aheadStack.push(currentPage);
+            this.currentPage = url;
+        }
+    }
 
+    /**
+     * 打开新的网页
+     */
+    public void openNew(String url) {
+        // 打开新的网页需要把aheadStack清空，因为此时打开新的网页了，相当于是重置了前进操作
+        aheadStack.clear();
+        backStack.push(currentPage);
+        this.currentPage = url;
+    }
+
+    public void showCurrentPage() {
+        System.out.println("currentPage: " + this.currentPage);
     }
 
     private static class LinkedListBaseStack {
@@ -72,6 +86,10 @@ public class StackOnBrowser {
             top = top.next;
             return data;
         }
+
+        public void clear() {
+            this.top = null;
+        }
     }
 
     private static class Node {
@@ -83,5 +101,15 @@ public class StackOnBrowser {
             this.next = node;
         }
 
+    }
+
+    public static void main(String[] args) {
+        StackOnBrowser browser = new StackOnBrowser();
+        browser.openNew("aaa");
+        browser.openNew("bbb");
+        browser.openNew("ccc");
+        browser.goBack();
+        browser.goAhead();
+        browser.showCurrentPage();
     }
 }
