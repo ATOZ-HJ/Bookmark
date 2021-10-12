@@ -1,5 +1,7 @@
 package com.bookmark.algo.leetcode;
 
+import java.util.LinkedList;
+
 /**
  * @author: hj
  * @date: 2021-10-11 09:04
@@ -19,16 +21,31 @@ package com.bookmark.algo.leetcode;
  *               </p>
  **/
 
-public class LeetCode09 {
-    public LeetCode09() {
+public class Offer09 {
+    LinkedList<Integer> stackA;
+    LinkedList<Integer> stackB;
 
+    public Offer09() {
+        stackA = new LinkedList<>();
+        stackB = new LinkedList<>();
     }
 
     public void appendTail(int value) {
-
+        stackA.push(value);
     }
 
     public int deleteHead() {
-        return 0;
+        // 判断b是否为空,b为空，将a中元素插入
+        if (stackB.isEmpty()) {
+            while (!stackA.isEmpty()) {
+                stackB.push(stackA.pop());
+            }
+        }
+        if (!stackB.isEmpty()) {
+            return stackB.pop();
+        } else {
+            return -1;
+        }
     }
+
 }
