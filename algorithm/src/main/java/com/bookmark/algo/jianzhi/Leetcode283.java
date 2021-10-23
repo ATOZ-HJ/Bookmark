@@ -1,5 +1,7 @@
 package com.bookmark.algo.jianzhi;
 
+import java.util.Arrays;
+
 /**
  * @author: hj
  * @date: 2021-10-23 13:26
@@ -28,7 +30,45 @@ public class Leetcode283 {
      *
      * @param nums
      */
-    public void moveZeroes(int[] nums) {
-        //1.指定另一个指针，
+    public static void moveZeroes(int[] nums) {
+        //1.创建一个指针，这个指针左侧都是非0的元素，右侧到index的之间为0
+        int j = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                nums[j] = nums[i];
+                if (i != j) {
+                    nums[i] = 0;
+                }
+                j++;
+            }
+        }
+        System.out.println("nums = " + Arrays.toString(nums));
+
+    }
+
+    /**
+     * 注意自顶向下的变成方式
+     *
+     * @param nums
+     */
+    public static void moveZeroes2(int[] nums) {
+        //1.loop，指定j指针表示非0的元素
+        int j = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                nums[j++] = nums[i];
+            }
+        }
+        //循环结束后在将 j 指针之后的元素置为 0
+        for (int i = j; i < nums.length; i++) {
+            nums[i] = 0;
+        }
+
+        System.out.println("nums = " + Arrays.toString(nums));
+
+    }
+
+    public static void main(String[] args) {
+        moveZeroes2(new int[]{0, 1, 0, 3, 12});
     }
 }
