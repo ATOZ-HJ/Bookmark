@@ -46,6 +46,7 @@ public class Leetcode283 {
 
     }
 
+
     /**
      * 注意自顶向下的变成方式
      *
@@ -66,6 +67,32 @@ public class Leetcode283 {
 
         System.out.println("nums = " + Arrays.toString(nums));
 
+    }
+
+    /**
+     * 注意自顶向下的变成方式
+     *
+     * @param nums
+     */
+    public static void moveZeroes3(int[] nums) {
+        //创建两个指针
+        int left = 0;
+        int right = 0;
+        int length = nums.length;
+        while (right < length) {
+            if (nums[right] != 0) {
+                //交换左右指针元素
+                swap(right, left, nums);
+                left++;
+            }
+            right++;
+        }
+    }
+
+    private static void swap(int right, int left, int[] nums) {
+        int temp = nums[right];
+        nums[right] = nums[left];
+        nums[left] = temp;
     }
 
     public static void main(String[] args) {
