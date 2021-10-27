@@ -150,7 +150,7 @@ CTRL+S 保存 .ktr 格式的文件
 
 ### Linux上使用与配置
 
-### 默认配置
+#### 默认配置
 
 1. 默认安装了jdk1.8
 
@@ -210,8 +210,86 @@ cd /home/pdi/data-integration
 ```
 
 ```sh
-./pan.sh -file=/home/pdi/data-integration/files/TB_OBJECT_1090_O2M.ktr >> /home/pdi/logs/pdi.log
+nohup ./pan.sh -file=/home/pdi/data-integration/files/TB_OBJECT_1090_O2M.ktr >> /home/pdi/logs/pdi.log &
 ```
+
+
+
+
+
+
+
+### 执行定时转换
+
+#### Windows上执行作业
+
+1. 运行Spoon.bat，进入主界面。点击左上角的 **文件 → 新建 → 作业(J)**新建一个作业（job），并保存，作业的后缀名为kjb。
+
+![image-20211021093924888](assets/image-20211021093924888.png)
+
+
+
+2. 点击面板左侧的 **核心对象** ，选择 **通用**文件夹下的 **START** 和 **转换** 并把它拖到右侧的编辑区中，按住 **shift** 画线连接“START” 和“转换”。
+
+![image-20211021094323173](assets/image-20211021094323173.png)
+
+
+
+3. 双击编辑区的 **Start** 图标，设置定时任务。
+
+![image-20211021094556503](assets/image-20211021094556503.png)
+
+
+
+
+
+4. 双击编辑区的 **转化** 图标，设置要定时执行的转换。(这里我选择的是我在上文中创建的转换)
+
+![image-20211021095055156](assets/image-20211021095055156.png)
+
+
+
+
+
+5. 点击 **Run**。
+
+![image-20211021095252763](assets/image-20211021095252763.png)
+
+
+
+6. 点击 **执行** 来执行这个作业
+
+![image-20211021095424744](assets/image-20211021095424744.png)
+
+
+
+
+
+
+
+#### Linux上执行作业
+
+1. 创建files目录
+
+```shell
+mkdir files
+cd files
+```
+
+2. 上传我们刚刚在Windows平台保存的  **.kjb** 文件 到 **files** 目录下
+3. 执行作业命令
+
+```shell
+cd /home/pdi/data-integration
+```
+
+```shell
+nohup ./kitchen.sh -file=/home/pdi/data-integration/files/syncJob.kjb >> /home/pdi/logs/job.log &
+```
+
+
+
+
 
 
 
@@ -226,3 +304,16 @@ cd /home/pdi/data-integration
 1. 定时执行
 2. 日志输出到指定文件
 3. 考虑无法在win上连接数据库的情况
+
+
+
+
+
+
+
+1. 数据库信息是否可以在部署前拿到，需要配置
+2. 全量导入历史文件时，del格式文件处理
+
+
+
+吴老师，目前同步增量数据的工具使用的是PDI(kettle)，一个开源的ETL工具 ,行内允许安装使用吗
