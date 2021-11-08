@@ -292,28 +292,3 @@ nohup ./kitchen.sh -file=/home/pdi/data-integration/files/syncJob.kjb >> /home/p
 
 
 
-
-
-
-
-
-
-
-
-
-1. 定时执行
-2. 日志输出到指定文件
-3. 考虑无法在win上连接数据库的情况
-
-
-
-
-
-
-
-1. 数据库信息是否可以在部署前拿到，需要配置
-2. 全量导入历史文件时，del格式文件处理
-
-
-
-吴老师，目前同步增量数据的工具使用的是PDI(kettle)，一个开源的ETL工具 ,行内允许安装使用吗
