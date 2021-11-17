@@ -1,6 +1,8 @@
 package com.bookmark.algo.camp;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author hj
@@ -37,13 +39,12 @@ import java.util.Arrays;
 public class Leetcode01 {
     /**
      * 1.暴力求解，双层for循环去找出所有的组合
-     * 2.使用map缓存
      *
      * @param nums
      * @param target
      * @return
      */
-    public static int[] twoSum(int[] nums, int target) {
+    public static int[] twoSum1(int[] nums, int target) {
         int[] arr = new int[2];
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; j++) {
@@ -56,9 +57,26 @@ public class Leetcode01 {
         return arr;
     }
 
+    /**
+     * 2.使用map缓存
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static int[] twoSum2(int[] nums, int target) {
+        int[] arr = new int[2];
+        Map<Integer, Integer> map = new HashMap<>(nums.length);
+        for (int i = 0; i < nums.length; i++) {
+
+
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         int[] arr = {2, 7, 11, 15};
-        int[] ints = twoSum(arr, 9);
+        int[] ints = twoSum1(arr, 9);
         System.out.println("ints = " + Arrays.toString(ints));
 
 
