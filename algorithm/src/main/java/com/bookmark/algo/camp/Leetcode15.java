@@ -138,7 +138,7 @@ public class Leetcode15 {
                     continue;
                 }
                 //判断三数之和的大小;
-                // 当三数之和小于0没有判断，直接值for循环中去递增了
+                // 当三数之和小于0没有判断，直接值for循环中去递增了de
                 while (second < third && nums[first] + nums[second] + nums[third] > 0) {
                     --third;
                 }
