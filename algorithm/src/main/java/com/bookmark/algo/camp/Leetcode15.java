@@ -1,7 +1,5 @@
 package com.bookmark.algo.camp;
 
-import com.bookmark.algo.array.Array;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -73,7 +71,7 @@ public class Leetcode15 {
     }
 
     /**
-     * 双指针的方法
+     * 双指针的方法 ：参考题解内容写出来的
      *
      * @param nums
      * @return
@@ -81,42 +79,33 @@ public class Leetcode15 {
     public static List<List<Integer>> threeSum3(int[] nums) {
         //先排序
         Arrays.sort(nums);
-        //固定指针k，另外两个指针 i 和 j 分别从 (k,nums.length)向中间移动
-
-        //当num[k]>0 则直接跳过，因为数组已经排序，nums[k]>=nums[i]>=nums[j],所以nums[k]>0是，得不到三数之和=0
-
-        //当k>0,如果nums[k]==nums[k-1]，则跳过本次循环，避免产生重复的组合
-        //记s = nums[k]+nums[i]+nums[j],如果s<0,则说明nums[i]小了，则i++;如果s>0,则说明nums[j]大了，则j--
-
         List<List<Integer>> res = new ArrayList<>();
-        for (int k = 0; k < nums.length; k++) {
+        //这里循环就很细致，固定k，并且有i和j两个指针，所以k<nums.length-2即可
+        for (int k = 0; k < nums.length - 2; k++) {
+            //如果nums[k]大于0，由于数组是排序的，后面的值更大，所以直接退出
             if (nums[k] > 0) {
                 break;
             }
+            //当k>0时，下标k处的值如果和上一个值相等，则直接跳过本次循环
             if (k > 0 && nums[k] == nums[k - 1]) {
                 continue;
             }
-            int j = nums.length - 1;
+            //定义左右指针
             int i = k + 1;
+            int j = nums.length - 1;
             while (i < j) {
-                int s = nums[k] + nums[i] + nums[j];
-                if (s == 0) {
-                    List<Integer> list = new ArrayList<>(Arrays.asList(nums[k], nums[i], nums[j]));
-                    res.add(list);
-                    i++;
-                    j--;
-                }
-                if (s > 0) {
-                    j--;
-                }
-                if (s < 0) {
-                    i++;
-                }
-                if (i > k + 1 && nums[i] == nums[i - 1]) {
-                    continue;
-                }
-                if (j < nums.length - 1 && nums[j] == nums[j + 1]) {
-                    continue;
+                int sum = nums[k] + nums[i] + nums[j];
+                //如果sum小于0，则说明nums[i]处的数值较小，需要向右移动一位
+                if (sum < 0) {
+                    //这里又很巧妙了；直接修改计算sum公式中的nums[i]的引用，并且i指针还+1了
+                    while (i < j && nums[i] == nums[++i]) ;
+                } else if (sum > 0) {
+                    //同上
+                    while (i < j && nums[j] == nums[--j]) ;
+                } else {
+                    res.add(new ArrayList<Integer>(Arrays.asList(nums[k], nums[i], nums[j])));
+                    while (i < j && nums[i] == nums[++i]) ;
+                    while (i < j && nums[j] == nums[--j]) ;
                 }
             }
         }
@@ -133,29 +122,30 @@ public class Leetcode15 {
         //先排序
         Arrays.sort(nums);
         List<List<Integer>> res = new ArrayList<>();
-
-
         //先遍历a
-        for (int first = 0; first < nums.length; first++) {
+        for (int first = 0; first < nums.length; ++first) {
+            if (nums[first] > 0) {
+                break;
+            }
             //如果a重复则直接跳过遍历
             if (first > 0 && nums[first] == nums[first - 1]) {
                 continue;
             }
             int third = nums.length - 1;
-            for (int second = first + 1; second < nums.length; second++) {
+            for (int second = first + 1; second < nums.length; ++second) {
                 //b也不能重复
                 if (second > first + 1 && nums[second] == nums[second - 1]) {
                     continue;
                 }
-                //判断s的大小
-                int s = nums[first] + nums[second] + nums[third];
-                if (second < third && s > 0) {
-                    third--;
+                //判断三数之和的大小;
+                // 当三数之和小于0没有判断，直接值for循环中去递增了
+                while (second < third && nums[first] + nums[second] + nums[third] > 0) {
+                    --third;
                 }
-                if (second < third && s < 0) {
-                    second++;
+                if (second == third) {
+                    break;
                 }
-                if (s == 0) {
+                if (nums[first] + nums[second] + nums[third] == 0) {
                     List<Integer> list = new ArrayList<>(Arrays.asList(nums[first], nums[second], nums[third]));
                     res.add(list);
                 }
