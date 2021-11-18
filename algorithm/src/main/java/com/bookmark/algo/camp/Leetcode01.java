@@ -68,15 +68,41 @@ public class Leetcode01 {
         int[] arr = new int[2];
         Map<Integer, Integer> map = new HashMap<>(nums.length);
         for (int i = 0; i < nums.length; i++) {
+            int a = target - nums[i];
+            //从map中查询对应的num是否存在
+            if (map.get(target - nums[i]) != null) {
+                arr[0] = i;
+                arr[1] = map.get(a);
+                return arr;
+            }
+            map.put(nums[i], i);
+        }
+        return null;
+    }
 
-
+    /**
+     * 3.代码优化
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static int[] twoSum3(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>(nums.length);
+        for (int i = 0; i < nums.length; i++) {
+            int a = target - nums[i];
+            //从map中查询对应的num是否存在
+            if (map.containsKey(target - nums[i])) {
+                return new int[]{map.get(target - nums[i]), i};
+            }
+            map.put(nums[i], i);
         }
         return null;
     }
 
     public static void main(String[] args) {
         int[] arr = {2, 7, 11, 15};
-        int[] ints = twoSum1(arr, 9);
+        int[] ints = twoSum2(arr, 9);
         System.out.println("ints = " + Arrays.toString(ints));
 
 
