@@ -100,6 +100,27 @@ public class Leetcode01 {
         return null;
     }
 
+    /**
+     * 2021.11.21
+     * 1.使用双层for，O(n^2) 时间复杂度
+     * 2.使用map缓存目标值
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static int[] twoSum_third(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            Integer a = target - nums[i];
+            if (map.containsKey(a)) {
+                return new int[]{map.get(a), i};
+            }
+            map.put(nums[i], i);
+        }
+        return nums;
+    }
+
     public static void main(String[] args) {
         int[] arr = {2, 7, 11, 15};
         int[] ints = twoSum2(arr, 9);
