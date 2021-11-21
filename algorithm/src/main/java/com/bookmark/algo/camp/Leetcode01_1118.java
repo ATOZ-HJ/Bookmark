@@ -36,7 +36,7 @@ import java.util.Map;
  * 链接：https://leetcode-cn.com/problems/two-sum
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-public class Leetcode01 {
+public class Leetcode01_1118 {
     /**
      * 1.暴力求解，双层for循环去找出所有的组合
      *
@@ -90,7 +90,6 @@ public class Leetcode01 {
     public static int[] twoSum3(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>(nums.length);
         for (int i = 0; i < nums.length; i++) {
-            int a = target - nums[i];
             //从map中查询对应的num是否存在
             if (map.containsKey(target - nums[i])) {
                 return new int[]{map.get(target - nums[i]), i};
