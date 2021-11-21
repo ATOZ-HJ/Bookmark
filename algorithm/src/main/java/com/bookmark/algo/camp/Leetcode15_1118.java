@@ -13,7 +13,7 @@ import java.util.List;
  * 1.暴力求解时间复杂度 n^3
  * 2.使用map来作缓存，降低时间复杂度,n^2
  */
-public class Leetcode15 {
+public class Leetcode15_1118 {
 
 
     /**
@@ -154,6 +154,7 @@ public class Leetcode15 {
         }
         return res;
     }
+
 
     public static void main(String[] args) {
         List<List<Integer>> lists = threeSum3(new int[]{-1, 0, 1, 2, -1, -4});
