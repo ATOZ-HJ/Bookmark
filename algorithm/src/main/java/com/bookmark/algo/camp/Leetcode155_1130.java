@@ -1,5 +1,7 @@
 package com.bookmark.algo.camp;
 
+import java.util.LinkedList;
+
 /**
  * @author: hj
  * @date: 2021-11-30 15:39
@@ -45,23 +47,56 @@ package com.bookmark.algo.camp;
  **/
 
 public class Leetcode155_1130 {
-    public Leetcode155_1130() {
 
+    /**
+     * 存放数据的栈
+     */
+    private LinkedList<Integer> stack;
+
+    /**
+     * 存放最小值的栈
+     */
+    private LinkedList<Integer> minStack;
+
+    public Leetcode155_1130() {
+        stack = new LinkedList<>();
+        minStack = new LinkedList<>();
     }
 
+    /**
+     * 1.入栈时取出最小栈顶的值进行比较
+     * 2.如果最小栈顶的值
+     * @param val
+     */
     public void push(int val) {
-
+        stack.push(val);
+        //与最小栈栈顶元素比较大小，判断是否需要入最小栈
+        if (!minStack.isEmpty()) {
+            Integer minPeek = minStack.peek();
+            if (val <= minPeek) {
+                minStack.push(val);
+            }
+        }
     }
 
     public void pop() {
+        //取出元素判断是否与最小栈的栈顶元素相同
+        if (stack.isEmpty()) {
+            return;
+        }
+        if (!minStack.isEmpty()) {
+            Integer minPeek = minStack.peek();
 
+        }
     }
 
     public int top() {
-
+        //返回存放数据栈的栈顶值
+        return stack.peek();
     }
 
     public int getMin() {
-
+        //返回最小栈栈顶的值
+        return 0;
     }
 }
