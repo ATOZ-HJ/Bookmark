@@ -59,6 +59,6 @@ public class Leetcode26 {
      * @return
      */
     public int removeDuplicates(int[] nums) {
-
+        return 0;
     }
 }
