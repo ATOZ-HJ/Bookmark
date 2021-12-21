@@ -14,7 +14,6 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>leetcode</module>
         <module>network</module>
         <module>openapi</module>
         <module>openapi/dingtalk</module>
@@ -23,7 +22,6 @@
         <module>developtest</module>
         <module>designpatterns</module>
         <module>algorithm</module>
-        <module>nowcoder</module>
         <module>springboot-dubbo</module>
         <module>springboot-dubbo/sample-api</module>
         <module>springboot-dubbo/sample-provider</module>
@@ -36,9 +34,15 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>5.1.4.RELEASE</spring.version>
         <junit.version>4.12</junit.version>
+        <hutool.all.version>5.4.1</hutool.all.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.all.version}</version>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

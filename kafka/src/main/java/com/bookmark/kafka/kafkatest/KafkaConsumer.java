@@ -1,8 +1,11 @@
 package com.bookmark.kafka.kafkatest;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * @author: hj
@@ -10,15 +13,16 @@ import org.springframework.stereotype.Component;
  * @description:
  **/
 @Component
+@Slf4j
 public class KafkaConsumer {
-    @KafkaListener(topics = {"topic1"})
-    public void onMessage1(ConsumerRecord<?, ?> record) {
 
-        String key = (String) record.key();
-        
-        System.out.println("key = " + key);
-        // 消费的哪个topic、partition的消息,打印出消息内容
-        System.out.println("简单消费：" + record.topic() + "-" + record.partition() + "-" + record.value());
+    @KafkaListener(topics = {"test_comsume"})
+    public void comsumeTestBatch2(List<ConsumerRecord<?, ?>> recordList) {
+        for (ConsumerRecord<?, ?> record : recordList) {
+            String messageInfo = (String) record.value();
+            int i = 1 / 0;
+            log.info("消息内容:{}", messageInfo);
+        }
     }
 
 }
