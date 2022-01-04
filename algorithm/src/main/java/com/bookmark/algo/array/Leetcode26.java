@@ -60,7 +60,6 @@ public class Leetcode26 {
      */
     public static int removeDuplicates(int[] nums) {
         //数组长度为0，则直接返回0
-
         //数据长度>0 ,数组中的第一个元素肯定是会返回的
         //所以可以从下标1开始进行遍历
         //数组有序，所有如果有重复的元素，那么重复的元素下标是相连的
