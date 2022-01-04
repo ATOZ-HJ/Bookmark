@@ -58,4 +58,41 @@ package com.bookmark.algo.array;
 
 public class Leetcode27 {
 
+    /**
+     * 左右指针，left 和 right
+     * 1. 双指针分别从下标0处开始遍历
+     * 2. right指针遍历元素，当元素和val值不相同，则将其复制到left指针的位置
+     * 3. 则[0,left)指针都是
+     * @param nums
+     * @param val
+     * @return
+     */
+    public int removeElement1(int[] nums, int val) {
+        int left = 0;
+        for (int right = 0; right < nums.length; right++) {
+            if (nums[right] != val) {
+                //复制right元素到left
+                nums[left++] = nums[right];
+            }
+        }
+        return left;
+    }
+
+    /**
+     * 左
+     * @param nums
+     * @param val
+     * @return
+     */
+    public int removeElement2(int[] nums, int val) {
+        int left = 0;
+        int right = nums.length;
+        while (left < right) {
+            if (nums[left] != val) {
+
+            }
+        }
+        return 0;
+    }
+
 }
