@@ -59,30 +59,20 @@ public class Leetcode26 {
      * @return
      */
     public static int removeDuplicates(int[] nums) {
-        //数组长度为0，则直接返回0
-        //数据长度>0 ,数组中的第一个元素肯定是会返回的
-        //所以可以从下标1开始进行遍历
-        //数组有序，所有如果有重复的元素，那么重复的元素下标是相连的
-        //利用快慢指针fast 和 slow，fast表示数组指针的位置，slow表示
-        //数组长度为0，则直接返回0
         if (nums.length == 0) {
             return 0;
         }
         int slow = 1;
         for (int fast = 1; fast < nums.length; fast++) {
-            if (nums[fast] == nums[fast -1]) {
+            if (nums[fast] == nums[fast - 1]) {
                 continue;
-            } else {
-                //交换快慢指针处的元素
-                swap(nums, slow, fast);
-                slow++;
             }
+            nums[slow] = nums[fast];
+            slow++;
         }
-        return slow ;
+        return slow;
     }
-    private  static void swap(int[] nums, int slow, int fast) {
-        nums[slow] = nums[fast];
-    }
+
 
     public static void main(String[] args) {
         final int i = removeDuplicates(new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4});
