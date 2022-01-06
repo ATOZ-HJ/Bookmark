@@ -68,20 +68,20 @@ public class Leetcode27 {
         if (nums.length == 0) {
             return 0;
         }
-        int left = 0;
-        for (int right = 0; right < nums.length; right++) {
+        int slow = 0;
+        for (int fast = 0; fast < nums.length; fast++) {
             //右指针元素与val相同
-            if (nums[right] == val) {
+            if (nums[fast] == val) {
                 continue;
             }
-            nums[left] = nums[right];
-            left++;
+            nums[slow] = nums[fast];
+            slow++;
         }
-        return left;
+        return slow;
     }
 
     /**
-     * 左
+     *
      * @param nums
      * @param val
      * @return
@@ -90,11 +90,14 @@ public class Leetcode27 {
         int left = 0;
         int right = nums.length;
         while (left < right) {
-            if (nums[left] != val) {
-
+            if (nums[left] == val) {
+                nums[left] = nums[right - 1];
+                right--;
+            } else {
+                left++ ;
             }
         }
-        return 0;
+        return left;
     }
 
 }
