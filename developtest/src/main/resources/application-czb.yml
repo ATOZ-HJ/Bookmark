@@ -1,0 +1,95 @@
+server:
+  port: 1020
+public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBALrN1PfcyQrH6ExkLN3tER6X00Ql6HKnYhGmPPnny1BN/0JQOjCSDuig8R/TUY67SZzQ1Goo6l6iycoJ0+gGovkCAwEAAQ==
+spring:
+  application:
+    name: quant-backtest
+  cloud:
+    nacos:
+      discovery:
+        enabled: false
+    consul:
+      host: 10.253.49.194
+      port: 8500
+      discovery:
+        ip-address: 10.253.50.55
+        prefer-ip-address: true
+        instance-ip: ${spring.application.name}-${spring.cloud.consul.discovery.ip-address}-${server.port}
+  datasource:
+    quant:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://10.253.48.207:3390/czb_quant?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+      username: kingstar
+      password: Kingstar@2021
+    quotation:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://10.253.48.207:3390/czb_quant?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+      username: kingstar
+      password: Kingstar@2021
+    type: com.alibaba.druid.pool.DruidDataSource
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  servlet:
+    multipart:
+      enabled: true #开启文件上传
+      max-file-size: 3200MB
+      max-request-size: 3200MB
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+  endpoint:
+    health:
+      show-details: always
+# 日志文件配置
+logging:
+  file:
+    max-size: 10MB
+    max-history: 7
+    name: /home/ksquant/qtserver/logs/quantitative.log
+  level:
+    com.kingstar.quant.backtest.mapper: info
+mybatis:
+  mapper-locations: classpath:mapping/**/*.xml
+
+
+# 调用微服务工作流的配置信息
+sdk:
+  flow:
+    rest-template:
+      #      默认为true，通过注册中心拿到流程的服务进行负载均衡的调用；非微服务这边设置为false，根据用户自定义流程服务地址进行调用
+      loadbalanced-enable: false
+      #      配置自定义调用的流程服务地址
+      default-request-url: http://10.253.49.58:9080/newService/json
+
+async:
+  executor:
+    thread:
+      core_pool_size: 1
+      max_pool_size: 15
+      name:
+        prefix: async-service-
+      queue_capacity: 9999
+
+factor:
+  release:
+    execute: true
+
+# 上下游服务调用配置
+ks:
+  backtest:
+    qt-url: http://10.253.48.55:8090
+    train-url: http://10.253.48.55:8010
+  quotation:
+    sge: http://10.253.49.53:10089/sge/v1/standard/query
+    sfe: http://10.253.49.53:10091/sfe/v1/minute/query
+    cmds: http://10.253.50.55:10092/cmds/v1/standard/query
+    cffe: http://10.253.50.55:10092/cmds/v1/getCffeQuotation
+  idc:
+    url: http://10.253.48.56:7777/
+
