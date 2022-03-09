@@ -1,4 +1,4 @@
-package com.bookmark.juc;
+package com.bookmark.java.juc;
 
 import com.google.common.util.concurrent.*;
 import lombok.extern.slf4j.Slf4j;

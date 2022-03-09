@@ -1,4 +1,4 @@
-package com.bookmark.juc;
+package com.bookmark.java.juc;
 
 import lombok.extern.slf4j.Slf4j;
 
