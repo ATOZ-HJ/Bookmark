@@ -100,4 +100,22 @@ public class Leetcode27 {
         return left;
     }
 
+
+    /**
+     *
+     * @param nums
+     * @param val
+     * @return
+     */
+    public int removeElement3(int[] nums, int val) {
+        int slow = 0;
+        for (int fast = 0; fast < nums.length; fast++) {
+            if (nums[fast] != val) {
+                nums[slow] = nums[fast];
+                slow++;
+            }
+        }
+        return slow;
+    }
+
 }

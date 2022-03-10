@@ -29,6 +29,7 @@ public class Offer30 {
      * 使用两个栈来实现，栈正常保存数值，B栈在
      */
     LinkedList<Integer> stackA;
+    //B从栈顶到栈底元素从小到大，最小值可能有多个，但都在栈顶
     LinkedList<Integer> stackB;
 
     /**

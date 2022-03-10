@@ -39,4 +39,22 @@ public class LeetCode283 {
             }
         }
     }
+
+    /**
+     * 双指针
+     * 1.快慢指针，快指针遍历，慢指针位置存放目标元素
+     *
+     * @param nums
+     */
+    public void moveZeroes2(int[] nums) {
+        int slow = 0;
+        for (int fast = 0; fast < nums.length; fast++) {
+            if (nums[fast] == 0) {
+                int temp = nums[fast];
+                nums[fast] =  nums[slow] ;
+                nums[slow] = temp;
+                slow++;
+            }
+        }
+    }
 }

@@ -1,6 +1,7 @@
 package com.bookmark.algo.leetcode.first;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.Stack;
 
 /**
@@ -44,6 +45,23 @@ public class Offer06 {
 
         return arr;
     }
+
+
+    public static int[] reversePrint2(ListNode head) {
+        LinkedList<Integer> stack = new LinkedList<>();
+        while (head != null) {
+            int val = head.val;
+            head = head.next;
+            stack.push(val);
+        }
+        int size = stack.size();
+        int[] arr = new int[size];
+        for (int i = 0; i < size; i++) {
+            arr[i] = stack.pop();
+        }
+        return arr;
+    }
+
 
     // Definition for singly-linked list.
     public static class ListNode {

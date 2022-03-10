@@ -57,4 +57,17 @@ public class Leetcode70 {
         return c;
     }
 
+    public int climbStairs2(int n) {
+        if (n < 3) {
+            return n;
+        }
+        int a = 1, b = 2, c = 0;
+        for (int i = 3; i < n + 1; i++) {
+            c = a + b;
+            a = b;
+            b = c;
+        }
+        return c;
+    }
+
 }

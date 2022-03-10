@@ -73,6 +73,26 @@ public class Leetcode26 {
         return slow;
     }
 
+    /**
+     * 如果有重复的值，则这两个值相邻
+     *
+     * @param nums
+     * @return
+     */
+    public static int removeDuplicates2(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+        int slow = 1;
+        for (int fast = 1; fast < nums.length; fast++) {
+            if (nums[fast - 1] == nums[fast]) {
+                continue;
+            }
+            nums[slow] = nums[fast];
+            slow++;
+        }
+        return slow;
+    }
 
     public static void main(String[] args) {
         final int i = removeDuplicates(new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4});
