@@ -1,4 +1,4 @@
-package com.bookmark.java.juc;
+package com.bookmark.java.thread.asyncallback;
 
 import com.google.common.util.concurrent.*;
 import lombok.extern.slf4j.Slf4j;

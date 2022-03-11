@@ -1,0 +1,31 @@
+	// 线程1
+	synchronized (lock) {
+		if (conditionA) {
+			doSomething();
+			// 唤醒其他线程，或者notifyAll()唤醒其他所有等待线程
+        	lock.notify();
+         } else {
+            try {
+				// 第二次进入 不满足条件自动wait释放锁
+				lock.wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	// 线程2
+	synchronized (lock) {
+		if (!conditionA) {
+			doSomething();
+        	lock.notify();
+         } else {
+            try {
+				lock.wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+
