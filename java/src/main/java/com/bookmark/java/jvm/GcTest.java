@@ -8,7 +8,7 @@ package com.bookmark.java.jvm;
 public class GcTest {
     public static void main(String[] args) {
         byte[] allocation1, allocation2;
-        allocation1 = new byte[51536 * 1024];
+        allocation1 = new byte[53536 * 1024];
         allocation2 = new byte[21536 * 1024];
         System.out.println("方法执行了");
 
