@@ -1,4 +1,4 @@
-package com.bookmark.java.thread.multithread;
+package com.bookmark.java.thread.multithread.practice;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
