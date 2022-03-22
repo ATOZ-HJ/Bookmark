@@ -43,7 +43,7 @@ public class Test {
      * @param words string字符串一维数组
      * @return string字符串
      */
-    public static   String longestWord1(String[] words) {
+    public static String longestWord1(String[] words) {
         final Trie trie = new Trie();
         int index = 0;
         for (String word : words) {
@@ -61,10 +61,13 @@ public class Test {
      * @param words string字符串一维数组
      * @return string字符串
      */
-    public static   String longestWord2(String[] words) {
+    public static String longestWord2(String[] words) {
         Set<String> wordSet = new HashSet<>(Arrays.asList(words));
 
-        Arrays.sort(words, (a, b) -> a.length() == b.length() ? a.compareTo(b) : b.length() - a.length());
+        //按照长度进行排序
+        Arrays.sort(words, (a, b) -> a.length() ==
+                b.length() ? a.compareTo(b) : b.length() - a.length());
+        System.out.println("words = " + Arrays.toString(words));
         for (String word : words) {
             char[] cs = word.toCharArray();
             if (find(cs, 0, wordSet)) {
@@ -92,7 +95,7 @@ public class Test {
         return false;
     }
 
-    static  class Node {
+    static class Node {
         char c;
         HashMap<Character, Node> children = new HashMap<>();
         int end;
@@ -140,7 +143,6 @@ public class Test {
             return ans;
         }
     }
-
 
 
     public static void main(String[] args) {
